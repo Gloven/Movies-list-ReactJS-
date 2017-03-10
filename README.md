@@ -10,7 +10,8 @@
   
 #### Запуск приложения 
 --- 
-<li> npm install
-<li>  mongod (Запуск БД)
-<li> npm run server
-<li> npm run webpack-devserver
+<li> `npm install`
+<li>  `mongod` (Запуск БД)
+<li> `npm run server`
+<li> `npm run webpack-devserve`r
+<li> Откройте http://localhost:8090 в браузере
