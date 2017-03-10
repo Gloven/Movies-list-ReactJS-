@@ -10,6 +10,7 @@
   
 #### Запуск приложения 
 --- 
-
-<li> babel-node server/app.js
+<li> npm install
+<li>  mongod (Запуск БД)
+<li> npm run server
 <li> npm run webpack-devserver
