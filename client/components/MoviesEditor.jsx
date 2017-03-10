@@ -10,7 +10,8 @@ const MoviesEditor = React.createClass({
 			stars:'',
 			titleIsEmpty:true,
 			starsIsEmpty:true,
-			yearIsEmpty:true
+			yearIsEmpty:true,
+			yearOk:true
 		};
 	},
 
@@ -78,7 +79,8 @@ const MoviesEditor = React.createClass({
 			stars:'',
 			titleIsEmpty:true,
 			starsIsEmpty:true,
-			yearIsEmpty:true
+			yearIsEmpty:true,
+			yearOk:true
 		});
 
 	},
@@ -87,10 +89,24 @@ const MoviesEditor = React.createClass({
 		console.log('sorted')
 	},
 
+	onBlur: function (event) {
+    if (!(+event.target.value.trim()>1899 && +event.target.value.trim()<2017)) {
+    	 this.setState({
+    		 yearOk:false
+    		});
+    	} else {
+    		this.setState({
+     	yearOk:true
+    });
+    	}
+   
+  },
+
 	render(){
 		const titleIsEmpty = this.state.titleIsEmpty;
 		const starsIsEmpty = this.state.starsIsEmpty;
 		const yearIsEmpty = this.state.yearIsEmpty;
+		const yearOk = this.state.yearOk;
 
 		return (
 			<div className='MoviesEditor'>
@@ -111,6 +127,7 @@ const MoviesEditor = React.createClass({
 					value={this.state.releaseYear}
 					placeholder = 'Release Year...'
 					onChange={this.handleReleaseYearChange}
+					onBlur = {this.onBlur}
 					
 				/>
 				<select id="myselect"
@@ -130,7 +147,7 @@ const MoviesEditor = React.createClass({
 				<div>
 					<button className = 'MoviesEditor__button'
 						onClick={this.handleMovieAdd}
-						disabled = {starsIsEmpty||titleIsEmpty||yearIsEmpty}>
+						disabled = {starsIsEmpty||titleIsEmpty||yearIsEmpty||!yearOk}>
 						Add movie
 					</button>
 					<button  className = 'MoviesEditor__button' onClick={this.handleMovieSort}>
